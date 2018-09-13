@@ -66,7 +66,6 @@ function LetterChanges(str, increment) {
             return chr;
 
         }).join('');
-
          
 }
 */
