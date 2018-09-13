@@ -9,33 +9,68 @@ modified string.
 
 */
 
-function LetterChanges(str) { 
+function LetterChanges(str){
+    var rxAlpha = /^[a-zA-Z]$/;
+    var rxVowel = /^[aeiou]$/;
+    var asciiStart = "a".charCodeAt(0);
+    var strArr = str.toLowerCase().split('');
+
+        for(var i = 0; i < strArr.length; i++){
+            
+            strArr[i] = rxAlpha.test(strArr[i]) ? 
+            String.fromCharCode((((strArr[i].charCodeAt(0) + 1) - asciiStart) %  26) + asciiStart) : strArr[i];
+
+            strArr[i] = rxVowel.test(strArr[i]) ? strArr[i].toUpperCase() : strArr[i];
+        }
+        return strArr.join('');
+}
+
+//Alternative with increment
+/*
+function LetterChanges(str, increment){
+    var rxAlpha = /^[a-zA-Z]$/;
+    var rxVowel = /^[aeiou]$/;
+    var asciiStart = "a".charCodeAt(0);
+    var strArr = str.toLowerCase().split('');
+
+        for(var i = 0; i < strArr.length; i++){
+            
+            strArr[i] = rxAlpha.test(strArr[i]) ? 
+            String.fromCharCode((((strArr[i].charCodeAt(0) + (increment % 26)) - asciiStart) %  26) + asciiStart) : strArr[i];
+
+            strArr[i] = rxVowel.test(strArr[i]) ? strArr[i].toUpperCase() : strArr[i];
+        }
+        return strArr.join('');
+}
+*/
+
+//Alternative with increment
+/*
+function LetterChanges(str, increment) {
 
     var rxAlpha = /^[a-zA-Z]$/;
 
     var rxVowel = /^[aeiou]$/;
+   //Removed outer string split in favor of a single map
+              //normalize String to lowercase
+        return str.toLowerCase().split('').map(function(chr){  
+                           //use let instead of var for code block scope
+            let asciiStart = "a".charCodeAt(0);
+                            //anything less than 26 will result in itself, 26 % 26 = 0, anything above will be negative remainder
+            increment = increment < 0 ? (increment % 26) : increment;
 
-   return str.split(' ').map(function(word){
-
-        return word.split('').map(function(chr){  
-
-            asciiStart = (chr == chr.toUpperCase()) ? 65 : 97;
-
-            chr = rxAlpha.test(chr) ? String.fromCharCode((((chr.charCodeAt(0) + 1) - asciiStart) %  26) + asciiStart) : chr;
+            chr = rxAlpha.test(chr) ? String.fromCharCode((((chr.charCodeAt(0) + increment) - asciiStart) %  26) + asciiStart) : chr;
 
             chr = rxVowel.test(chr) ? chr.toUpperCase() : chr;
 
- 
-
             return chr;
-
- 
 
         }).join('');
 
-    }).join(' ');
          
 }
+*/
+console.log(LetterChanges("fun times!",52)); //gvO Ujnft!
+console.log(LetterChanges("hello*3",1));  //lfmmp*3
 
-console.log(LetterChange("fun times!")); //gvO Ujnft!
-console.log(LetterChange("hello*3"));  //lfmmp*3
+
