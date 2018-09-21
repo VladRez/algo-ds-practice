@@ -3,6 +3,7 @@
 //standard approach
 function reverseStr(str){
 var reversedStr = '';
+
 //var str = str.split(''); can also be used
 
 	for (var i = str.length - 1 ; i >= 0; i--){
@@ -10,7 +11,7 @@ var reversedStr = '';
 	}
 
 	return reversedStr;
-}
+	}
 
 
 //using js methods
