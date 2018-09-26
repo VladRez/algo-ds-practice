@@ -1,0 +1,12 @@
+=begin
+Write a method get_double_age that takes in a hash and 
+returns twice the "age" value of the hash.
+=end
+
+def get_double_age(hash)
+    return hash["age"] * 2
+    end
+    
+    puts get_double_age({"name"=>"App Academy", "age"=>5})
+    puts get_double_age({"name"=>"Ruby", "age"=>23})
+    
