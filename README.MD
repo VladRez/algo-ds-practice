@@ -1,0 +1,1 @@
+This repo contains programming problems, solutions and notes I've attempted at online code ranking sites. Majority of solutions are my own with the exception of a few to which I'll give credit where credit is due.
