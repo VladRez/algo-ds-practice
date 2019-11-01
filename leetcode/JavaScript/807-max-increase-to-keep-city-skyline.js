@@ -21,7 +21,7 @@ function getColMax(grid, col){
 }
 
 
-/// better
+/// alt
 
 var maxIncreaseKeepingSkyline = function(grid) {
     let increase = 0;
