@@ -11,15 +11,12 @@ Because nums[0] + nums[1] = 2 + 7 = 9,
 return [0, 1].
 */
 
-var twoSum = function(nums, target) {
-    result = []
-    for(var i = 0; i < nums.length; i++){
-        for(var j = 0; j < nums.length; j++){
-            if(i !== j && nums[i] + nums[j] === target){
-                result.push(i);
-                result.push(j);
-                return result;
-            }
-        }
-    }
+var twoSum = function(nums, target) {  
+    for(let i = 0; i < nums.length; i++){
+        for(let j = i + 1; j < nums.length; j++){
+            let sum = nums[i] + nums[j]
+            if (sum === target) {
+               return [i,j]
+            };
+        }}
 };
